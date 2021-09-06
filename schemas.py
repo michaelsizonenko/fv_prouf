@@ -6,3 +6,8 @@ class User(BaseModel):
     email: str
     password: str
     name: str
+
+
+class UserOut(BaseModel):
+    name: str
+    email: str
