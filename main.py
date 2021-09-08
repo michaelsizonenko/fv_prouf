@@ -12,7 +12,7 @@ from sqlalchemy import text, insert
 
 app = FastAPI()
 
-engine = create_engine("postgresql+psycopg2://ytrjfvfyxdkscz:98c3b9c1e697bfab057368f2eeecb94f97c8ee9a37ccc8258c1476017b032ac9@ec2-54-217-15-9.eu-west-1.compute.amazonaws.com:5432/dv48inuots0m")
+engine = create_engine("postgresql+psycopg2://ytrjfvfyxdkscz:98c3b9c1e697bfab057368f2eeecb94f97c8ee9a37ccc8258c1476017b032ac9@ec2-54-217-15-9.eu-west-1.compute.amazonaws.com:5432/dv48inuots0m6")
 meta = MetaData(engine)
 table = Table('users', meta,
               Column('id', Integer, primary_key=True),
