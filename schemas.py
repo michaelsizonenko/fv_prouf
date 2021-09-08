@@ -11,3 +11,10 @@ class User(BaseModel):
 class UserOut(BaseModel):
     name: str
     email: str
+
+
+class UserDel(BaseModel):
+    name: str
+    email: str
+    password: str
+
