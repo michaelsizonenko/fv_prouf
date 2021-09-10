@@ -24,7 +24,7 @@ meta.create_all()
 
 
 @app.get("/user", status_code=200)
-def read_all(response: Response):
+def read_all():
     engine.connect()
     sql = text("select id, name, email from users")
     user_raws = engine.execute(sql)
@@ -35,7 +35,7 @@ def read_all(response: Response):
 
 
 @app.get("/user/{user_id}", status_code=200)
-def read_user_id(user_id: int, response: Response):
+def read_user_id(user_id: int):
     engine.connect()
     sql = text(f"select id, name, email from users where id='{user_id}'")
     user_row_id = engine.execute(sql)
@@ -46,7 +46,7 @@ def read_user_id(user_id: int, response: Response):
 
 
 @app.put("/user/{user_id}", status_code=200)
-def update_user(user_id: int, user_entity: User, response: Response):
+def update_user(user_id: int, user_entity: User):
     engine.connect()
     sql = text(f"update users set name={user_entity.name}, email={user_entity.email} where id={user_id} returning 'success'")
     user_raws = engine.execute(sql)
@@ -56,7 +56,7 @@ def update_user(user_id: int, user_entity: User, response: Response):
 
 
 @app.post("/user", status_code=201)
-def create_user(user_entity: User, response: Response):
+def create_user(user_entity: User):
     sql = table.insert().values(
         email=user_entity.email,
         name=user_entity.name,
@@ -82,7 +82,7 @@ def delete_user(user_id: int, user_entity: UserDel, response: Response):
 
 
 @app.patch("/user/{user_id}", status_code=200)
-def patch_user(user_id: int, response: Response, user_entity: User):
+def patch_user(user_id: int, user_entity: User):
     sql = select(table).where(table.c.id == user_id)
     conn = engine.connect()
     query = conn.execute(sql)

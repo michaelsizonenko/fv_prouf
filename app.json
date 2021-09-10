@@ -1,0 +1,9 @@
+{
+  "environments": {
+    "test": {
+      "scripts": {"test": "pytest --exitfirst --verbose test_test.py"
+      }
+    }
+  },
+  "buildpacks": [{ "url": "heroku/python" }]
+}
